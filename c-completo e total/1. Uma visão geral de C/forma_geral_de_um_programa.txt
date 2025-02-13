@@ -1,0 +1,17 @@
+declarações globais
+tipo devolvido main(lista de parâmetros){
+    sequência de comandos
+}
+
+tipo devolvido f1(lista de parâmetros){
+    sequência de comandos
+}
+
+tipo devolvido f2(lista de parâmetros){
+    sequência de comandos
+}
+
+.
+.
+.
+tipo devolvido fN(lista de parâmetros){}
