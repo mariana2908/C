@@ -82,3 +82,55 @@ cificador *static* tem efeitos diferewntes em variáveis locais e em variá-
 veis globais.*/
 
 // Variáveis locais static (pag. 45)
+/* Quando o modificador *static* é aplicado a uma variável local, o compilador
+cria armazenamento permanente para ela quase da mesma forma como cria armaze-
+namento para uma variável global. A diferença fundamental entre uma variável 
+local *static* e uma variável global é que a variável local *static* é reco-
+nhecida apenas no block em que está declarada. Em termos simples, uma variá-
+vel local *static* é uma variável local que retém seu valor entre chamadas 
+de função.
+   Variáveis locais *static* são muito importantes na criação de funções iso-
+ladas, porque diversos tipos de rotinas devem preservar um valor entre as 
+chamadas. Se variáveis *static* não fossem permitidas, variáveis globais ter-
+riam de ser usadas, abrindo brechas para possíveis efeitos colaterais. Um 
+exemplo de função que requer uma variável local *static* é um gerador de sé-
+rie de números que produz um novo número baseado no anterior. Seria possível
+declarar uma variável global para reter esse valor. Porém, cada vez que a 
+função é usada, você deve lembrar-se de declarar essa variável global já de-
+clarada. Além disso, usar uma variável global tornaria essa função difícil 
+de ser colocada em uma biblioteca de funções. A melhor solução é declarar 
+a variável retém o número gerado como *static*, como neste fragmento de 
+programa.*/
+
+series(void) {
+    static int series_num;
+
+    series_num = series_num+23;
+    return (series_num);
+}
+
+/* Nesse exemplo, a variável *series_num* pesmanece existindo entre as chama-
+das da função em vez da criação e exclusaõ que aqs variáveis locais normais 
+fariam. Isso significa que cada chamada a series() pode produzir um novo 
+membroda série, baseado no número precedente, sem declarar essa variável 
+globalmente.
+   Você pode dar à variável local *static* um valor de inicialização. Esse 
+valor é atribuído apenas uma vez - e não toda vez que o bloco de código é 
+inserido, de forma análoga às variáveis locais normais. Por exemplo, essa 
+versão de series() inicializa series_num() com 100:*/
+
+series (void) {
+    static int series_num = 100;
+    series_num = series_num+23;
+    return series_num;
+}
+
+/*Da forma como a função se acha agora, a série sempre começa com o valor 123.
+Enquanto isso é aceitável para algumas aplicações, a maioria dos geradores de
+séries permite ao usuário especificar o ponto inicial. Uma maneira de dar a 
+*series_num* um valor especificado pelo usuário é tornar *series_num* uma va-
+riável global e, em seguida, ajustar seu valor de acordo com o especificado.
+Porém, *series_num* foi feita *static* justamente para não ser definida como 
+global. Isso leva ao segundo uso de *static*.*/
+
+// Variáveis Globais static
