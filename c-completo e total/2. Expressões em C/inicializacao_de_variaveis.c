@@ -1,0 +1,1 @@
+// Inicialização de Variáveis (pág. 49)
