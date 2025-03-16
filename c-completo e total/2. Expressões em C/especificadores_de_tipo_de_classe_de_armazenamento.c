@@ -225,4 +225,22 @@ variáveis *register* são usadas quando mais apropriadas, isto é, em lugares o
 de são feitas muitas referências a uma variável. Isso é importante porque você 
 pode declarar qualquer número de variáveis como sendo do tipo *register*, mas 
 nem todas recebem a mesma otimização de velocidade.
-*/ 
+   O número de variáveis em registradores dentro de qualquer bloco de código é
+determinado pelo ambiente e pela implementação específica de C. Você não deve 
+preocupar-se em declarar muitas variáveis *register* porque o compilador C auto-
+maticamente transforma variáveis *register* em variáveis comuns quando o limite
+for alcançado. Isso é feito para assegurar a portabilidade do códido em C por 
+meio de uma ampla linha de processadores.)
+   Por todo esse livro, muitas variáveis de controle de laço seraõ do tipo *re-
+gister*. Normalmente, pelo menos duas variáveis *register* do tipo *char* ou *int*
+podem de fato ser colocadas em registradores da CPU. Como os ambientes variam enor-
+memente, consulte o manual do usuário do seu compilador para determinar se você
+pode aplicar quaisquer outros tipos de opções de otimizações.
+   Como uma variável *register* pode ser armazenada em um registrador da CPU, 
+variáveis *register* não podem ter endereços. Isto é, você não pode encontrar o
+endereço de uma variável *register* usando o operador *&* (discutido mais adiante
+neste capítulo).
+   Embora o padrão C ANSI tenha expandido a descrição de *register*, na prática 
+ele geralmente só tem um efeito significativo com os tipos inteiro e caractere.
+Logo, você provavelmente não deve contar com aumentos substanciais da velocidade 
+para os outros tipos de variáveis.*/ 
